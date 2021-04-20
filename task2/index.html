@@ -1,0 +1,152 @@
+<html style="background-color: lightgray;">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+</head>
+<body>
+     <div style="text-align: center; height: 75px; padding:1px;   text-transform:capitalize; background-color: rgb(0, 0, 0); color:white">
+     <h1 style="margin-bottom:-10px; "><a style="text-decoration: none; color:white;"href="/">Printing Logo- page</a></h1>
+</div>
+
+     <div style="margin:25px;">
+          <h1>Printing Logo</h1>
+          <div style="color:grey; font-size:16px;">Author: Fatima Naeem</div>
+          <div style="font-size:14px;"><hr>
+<p><strong>Setting up Stack</strong></p>
+<p>Setting up stack is crucial for linking OS with the C code for printing anything using C code. The purpose of stack is to store function call data i.e. the function variables and the memory address to which each function returns control upon completion. It is set up in the main assembly file.</p>
+<p>To do this, 16 kilobytes of memory is reserved when bootloader loads kernel. A stack pointer is also set to point to the starting stack frame.</p>
+<hr>
+<p><strong>Switching Operating System to 64-bit mode</strong></p>
+<p>To do this, CPU is switched to <em>long mode</em>. First, instructions are written to check if CPU supports long mode.
+Next, the long mode flag is enabled, after setting up paging.</p>
+<p>To finally enter 64-bit mode, a global descriptor table is created.</p>
+<p><strong>Paging</strong></p>
+<p>This means setting up virtual addresses which map to physical memory rather than physical memory addresses in RAM. This decreases memory use and memory fragmentation.</p>
+<p>This is done by creating page tables which define the mapping. These tables are used by CPU whenever we try to read or write to memory. Each page consists of 4 kB memory. There are four types of pages tables: level 4, level 3, level 2, and level 1. Each table can hold 512 entries. Since each virtual address takes up 48 of the 64 bits, the first 9 bits are used as an index to level 4 page entry. Level 4 entry points to corresponding level 3 table and the next 9 bits are used an index to level 3 page entry and so on, until level 1 entry is found which points to the physical page.</p>
+<p>Memory is allocated for these page tables. Then identity mapping is done i.e. mapping a physical address to exact same virtual address. After this, instructions for enabling paging are written.</p>
+<hr>
+<p><strong>Writing C code to print any text on the screen</strong></p>
+<p>To run C code, variables to store C source and object files are created in the Makefile.</p>
+<p><strong>Code for printing logo</strong></p>
+<p>void print_str(char* str)
+{</p>
+<pre><code>int i, j;
+
+for (i = 0; i &lt; height; i++) {
+
+        printS(i,j);
+    
+        giveSpace();
+    
+        printE(i,j);
+    
+        giveSpace();
+    
+        printE(i,j);
+    
+        giveSpace();
+    
+        printC(i,j);
+    
+        giveSpace();
+    
+        printS(i,j);
+    
+        print_newline();
+
+    }
+</code></pre>
+<p>}</p>
+<p>void printS(int i, int j)</p>
+<p>{</p>
+<pre><code>for (j = 0; j &lt; height; j++) {
+
+        if ((i == 0 || i == height / 2
+
+             || i == height - 1))
+
+            print_char('*');
+
+        else if (i &lt; height / 2
+
+                 &amp;&amp; j == 0)
+
+            print_char('*');
+
+        else if (i &gt; height / 2
+
+                 &amp;&amp; j == height - 1)
+
+            print_char('*');
+
+        else
+
+            print_char(' ');
+
+    }
+</code></pre>
+<p>}</p>
+<p>void printE(int i, int j)</p>
+<p>{</p>
+<pre><code>print_char('*');
+
+    for (j = 0; j &lt; height; j++) {
+
+        if ((i == 0 || i == height - 1)
+
+            || (i == height / 2
+
+                &amp;&amp; j &lt;= height / 2))
+
+            print_char('*');
+
+        else
+
+            print_char(' ');
+
+    }
+</code></pre>
+<p>}</p>
+<p>void printC(int i, int j)</p>
+<p>{</p>
+<pre><code>    print_char('*');
+
+    for (j = 0; j &lt; (height - 1); j++) {
+
+        if (i == 0 || i == height - 1)
+
+            print_char('*');
+
+        else
+
+            print_char(' ');
+
+    }
+</code></pre>
+<p>}</p>
+<p>void giveSpace()</p>
+<p>{</p>
+<pre><code>for(int k=0;k&lt;3;k++)
+
+         print_char(' ');
+</code></pre>
+<p>}</p>
+<hr>
+<figure>
+    <img src="/images/Capture.PNG"
+         alt="seecs"/> <figcaption>
+            <h4>This is the logo created by the above C code</h4>
+        </figcaption>
+</figure>
+
+<hr>
+</div>
+     </div>
+     <div style="height:35px;"></div>
+<div style=" position:fixed; color: white; height:35px; background-color:#000000; bottom:0px; text-align:center; width:99%">
+     <p style="margin:10px; "><a style="color: white; " target="_blank" href="https://github.com/fatimanaeemm/64-bit-os">Github for OS and Logo code</a></p>
+</div>
+</body>
+</html>

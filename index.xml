@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My 64-bit Operating System</title>
+    <link>http://example.org/</link>
+    <description>Recent content on My 64-bit Operating System</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Operating System</title>
+      <link>http://example.org/task1/</link>
+      <pubDate>Mon, 19 Apr 2021 11:25:25 +0500</pubDate>
+      
+      <guid>http://example.org/task1/</guid>
+      <description>Building 64-bit Operating System Kernel from scratch.  Tools used
+  Visual Studio Code for writing and compiling the code
+  Docker for building the Operating System
+  Qemu for emulating the OS
+   Building Image
+Using gcc compilation tools available on docker hub, environment is built and then a Docker Image is built from Windows against a non-Windows docker host and then an instance of that image is spinned up.</description>
+    </item>
+    
+    <item>
+      <title>Printing Logo</title>
+      <link>http://example.org/task2/</link>
+      <pubDate>Mon, 19 Apr 2021 11:25:21 +0500</pubDate>
+      
+      <guid>http://example.org/task2/</guid>
+      <description>Setting up Stack
+Setting up stack is crucial for linking OS with the C code for printing anything using C code. The purpose of stack is to store function call data i.e. the function variables and the memory address to which each function returns control upon completion. It is set up in the main assembly file.
+To do this, 16 kilobytes of memory is reserved when bootloader loads kernel. A stack pointer is also set to point to the starting stack frame.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://example.org/aboutme/</link>
+      <pubDate>Mon, 19 Apr 2021 11:16:10 +0500</pubDate>
+      
+      <guid>http://example.org/aboutme/</guid>
+      <description>Fatima Naeem
+Email address: fatima.naeem.5815@gmail.com
+Contact number: +92(342)5335193
+A computer scientist in making, with interest in software development and artificial intelligence.
+ Education   BS Computer Science| National University of Science And Technology (NUST)
+2019 –
+CGPA: 3.60
+  HSSC | Fauji Foundation College, New Lalazar
+2017 – 2019
+  SSC | Army Public School, Fort Road Rawalpindi
+2015 – 2017
+   Experience   Content Writer | Freelance</description>
+    </item>
+    
+  </channel>
+</rss>

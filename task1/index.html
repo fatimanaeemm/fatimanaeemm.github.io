@@ -1,0 +1,81 @@
+<html style="background-color: lightgray;">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+</head>
+<body>
+     <div style="text-align: center; height: 75px; padding:1px;   text-transform:capitalize; background-color: rgb(0, 0, 0); color:white">
+     <h1 style="margin-bottom:-10px; "><a style="text-decoration: none; color:white;"href="/">Building Operating System- page</a></h1>
+</div>
+
+     <div style="margin:25px;">
+          <h1>Building Operating System</h1>
+          <div style="color:grey; font-size:16px;">Author: Fatima Naeem</div>
+          <div style="font-size:14px;"><hr>
+<h4 id="building-64-bit-operating-system-kernel-from-scratch">Building 64-bit Operating System Kernel from scratch.</h4>
+<hr>
+<p><strong>Tools used</strong></p>
+<ul>
+<li>
+<p><strong>Visual Studio Code</strong> for writing and compiling the code</p>
+</li>
+<li>
+<p><strong>Docker</strong> for building the Operating System</p>
+</li>
+<li>
+<p><strong>Qemu</strong> for emulating the OS</p>
+</li>
+</ul>
+<hr>
+<p><strong>Building Image</strong></p>
+<p>Using gcc compilation tools available on docker hub, environment is built and then a Docker Image is built from Windows against a non-Windows docker host and then an instance of that image is spinned up.</p>
+<hr>
+<p><strong>Essential files</strong></p>
+<ul>
+<li>
+<p><strong>header.asm</strong></p>
+<p>It consists of some data to be included in the operating system binary.</p>
+<p>This magic data is important so that bootloaders can understand that we have an operating system that can be run on this computer.</p>
+<p>Bootloader&rsquo;s job is to locate the operating system and start it up. Multi-boot 2 specification is used for this OS, which is supported by most bootloaders.</p>
+</li>
+<li>
+<p><strong>main.asm</strong></p>
+<p>This file is the entry point into the OS.</p>
+</li>
+<li>
+<p><strong>linker.ld</strong></p>
+<p>It describes how to link the operating system together.</p>
+<p>The entry point and all the individual sections, such as the boot and the text sections, are specified.</p>
+</li>
+<li>
+<p><strong>grub.cgf</strong></p>
+</li>
+<li>
+<p><strong>Makefile</strong></p>
+<p>This organizes all the build commands.</p>
+<p>It also ensures only the modified files are rebuilt to make the process fast.</p>
+<p>It contains variables to hold all the assembly source files and assembly object files.</p>
+<p>Makefile contains the commands to build the object files from the corresponding source file when it is modified. Nasm compiles the assembly source files.</p>
+</li>
+<li>
+<p><strong>kernel.iso</strong></p>
+<p>This is the final iso file. This is generated when the instructions for building the operating system are executed.</p>
+</li>
+</ul>
+<hr>
+<h3 id="this-is-the-ouput-after-emulating-the-os-on-qemu">This is the ouput after emulating the OS on Qemu</h3>
+<figure>
+    <img src="/images/os_built.PNG"
+         alt="os_built"/> 
+</figure>
+
+</div>
+     </div>
+     <div style="height:35px;"></div>
+<div style=" position:fixed; color: white; height:35px; background-color:#000000; bottom:0px; text-align:center; width:99%">
+     <p style="margin:10px; "><a style="color: white; " target="_blank" href="https://github.com/fatimanaeemm/64-bit-os">Github for OS and Logo code</a></p>
+</div>
+</body>
+</html>
